@@ -146,8 +146,10 @@ bool juego(int opcion)             //funci�n juego
 	archivoAbierto.close();
 	return archivoAbierto2;
 }
+
+
 /*Permite a cualquiera de los dos jugadores realizar su turno del modo A en una partida.
-Recibe el archivo con el mazo y el n�mero de cartas que hay que robar
+Recibe el archivo con el mazo y el número de cartas que hay que robar
 y devuelvo los puntos obtenidos tras robar ese n�mero de cartas.*/
 float modoA(ifstream & archivoAbierto, int numCartas)
 {
@@ -175,8 +177,11 @@ float modoA(ifstream & archivoAbierto, int numCartas)
 	}
 	return score;
 }
+
+
 /*Permite realizar el turno del jugador humano en el modo B.
-Recibe el archivo con el mazo y el n�mero m�ximo de cartas que puede robar, y devuelve los puntos obtenidos.*/
+Recibe el archivo con el mazo y el n�mero m�ximo de cartas que puede robar,
+y devuelve los puntos obtenidos.*/
 float modoBhumano(ifstream &archivoAbierto, int numCartas)
 {
 	int contador = 1, carta;
@@ -213,8 +218,11 @@ float modoBhumano(ifstream &archivoAbierto, int numCartas)
 	}
 	return score;
 }
+
+
 /*Permite realizar el turno del jugador m�quina en el modo B.
-Recibe el archivo con el mazo, el n�mero m�ximo de cartas que puede robar y la puntuaci�n obtenida por el jugador humano,
+Recibe el archivo con el mazo, el n�mero m�ximo de cartas que puede robar
+y la puntuación obtenida por el jugador humano,
 y devuelve los puntos obtenidos.*/
 float modoBmaquina(ifstream &archivoAbierto, int numCartas, float puntosHumano)
 {
@@ -250,7 +258,9 @@ float modoBmaquina(ifstream &archivoAbierto, int numCartas, float puntosHumano)
 	}
 	return score;
 }
-/*Recibe los puntos obtenidos por el jugador humano y por la m�quina, y devuelve un valor que indica qui�n gana.*/
+
+/*Recibe los puntos obtenidos por el jugador humano y por la m�quina,
+y devuelve un valor que indica qui�n gana.*/
 int determinaGanador(float puntosHumano, float puntosMaquina)
 {
 	int ganador;
@@ -278,6 +288,9 @@ int determinaGanador(float puntosHumano, float puntosMaquina)
 	}
 	return ganador;
 }
+
+//Nos permite saber si quedan cartas en dicha posición del array tCartasPorAparecer cartas
+
 bool quedanCartas(const tCartasPorAparecer cartas)
 {
 	int total = 0;
@@ -290,6 +303,12 @@ bool quedanCartas(const tCartasPorAparecer cartas)
 		return false;
 	}
 }
+
+
+/*Permite realizar el turno del jugador humano en el modo C. Recibe el archivo
+con el mazo y una variable cartas que indica cuántas cartas de cada tipo quedan,
+y devuelve los puntos obtenidos y actualiza cartas de acuerdo con las cartas
+que haya robado el humano. */
 float modoChumano(ifstream &archivoAbierto, tCartasPorAparecer cartas)
 {
 	double puntuacion = 0;
@@ -368,6 +387,11 @@ float modoChumano(ifstream &archivoAbierto, tCartasPorAparecer cartas)
 	}
 	return puntuacion;
 }
+
+/*Determina si la probabilidad que tiene la máquina de pasarse si robara una carta
+más es mayor que 0.5. Recibe la puntuación actual de la máquina y una variable cartas
+que indica cuántas cartas de cada tipo quedan, y devuelve true si la probabilidad
+de pasarse si roba una carta más supera 0.5 y false en caso contrario.*/
 bool esProbablePasarse(float machineScore,const tCartasPorAparecer cartas)
 {
 	int cartasMalas = 0, total = 0;
@@ -391,6 +415,11 @@ bool esProbablePasarse(float machineScore,const tCartasPorAparecer cartas)
 	}
 	return pasarse;
 }
+
+/*Permite realizar el turno del jugador máquina en el modo C. Recibe el archivo
+con el mazo, una variable cartas que indica cuántas cartas de cada tipo quedan
+y la puntuación obtenida por el jugador humano, y devuelve los puntos obtenidos y
+actualiza cartas de acuerdo con las cartas que haya robado la máquina. */
 float modoCmaquina(ifstream &archivoAbierto, tCartasPorAparecer cartas, float puntosHumano)
 {
 	bool stop = false;

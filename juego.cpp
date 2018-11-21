@@ -407,7 +407,7 @@ bool esProbablePasarse(float machineScore,const tCartasPorAparecer cartas)
 			cartasMalas+=cartas[i];
 		}
 	}
-	estimacion = (double)(cartasMalas / total);
+	estimacion = (double) cartasMalas / total;
 	cout << estimacion;
 	if(estimacion > 0.5){
 		pasarse = true;

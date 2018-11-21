@@ -37,7 +37,7 @@ int menu()              // opciones del juego
 	setlocale(LC_CTYPE, "Spanish");
 	int opcion;
 	cout << "Bienvenido al juego de las Siete y Media" << endl;
-	cout << "Elija una opci�n:" << endl;
+	cout << "Elija una opción:" << endl;
 	cout << "1 - A" << endl;
 	cout << "2 - B" << endl;
 	cout << "3 - C" << endl;
@@ -72,7 +72,7 @@ bool juego(int opcion)             //funci�n juego
 		srand(time(NULL));
 		numCartas = rand();
 		numCartas = 3 + rand() % (6 - 3);
-		cout << "N�mero aleatorio: " << numCartas << endl;
+		cout << "Número aleatorio: " << numCartas << endl;
 		cout << " " << endl;
 		cout << "Player turn!" << endl;
 		if (opcion == 1)
@@ -80,15 +80,15 @@ bool juego(int opcion)             //funci�n juego
 			puntosHumano = modoA(archivoAbierto, numCartas);            // llama a la funci�n modoA
 			if (puntosHumano > 7.5)
 			{
-				cout << "Ha ganado la m�quina :(" << endl;
+				cout << "Ha ganado la máquina :(" << endl;
 			}
 			else
 			{
-				cout << "Es el turno de la m�quina" << endl;
+				cout << "Es el turno de la máquina" << endl;
 				puntosMaquina = modoA(archivoAbierto, numCartas);            // llama a la funci�n modoA para el turno de la m�quina
 				if (puntosMaquina > 7.5)
 				{
-					cout << "��ERES EL GANADOR!!" << endl;
+					cout << "¡¡ERES EL GANADOR!!" << endl;
 				}
 				else
 				{
@@ -101,15 +101,15 @@ bool juego(int opcion)             //funci�n juego
 			puntosHumano = modoBhumano(archivoAbierto, numCartas);     // llama a la funci�n modoBhumano
 			if (puntosHumano > 7.5)
 			{
-				cout << "Ha ganado la m�quina :( " << endl;
+				cout << "Ha ganado la máquina :( " << endl;
 			}
 			else
 			{
-				cout << "Es el turno de la m�quina" << endl;
+				cout << "Es el turno de la máquina" << endl;
 				puntosMaquina = modoBmaquina(archivoAbierto, numCartas, puntosHumano);   // llama la funci�n modoBm�quina
 				if (puntosMaquina > 7.5)
 				{
-					cout << "��ERES EL GANADOR!!" << endl;
+					cout << "¡¡ERES EL GANADOR!!" << endl;
 				}
 				else
 				{
@@ -201,7 +201,7 @@ float modoBhumano(ifstream &archivoAbierto, int numCartas)
 			score += carta;
 		}
 		cout << carta << endl;
-		cout << "Puntuaci�n: " << score << endl;
+		cout << "Puntuación: " << score << endl;
 		if (score > 7.5)
 		{
 			sehapasado = true;
@@ -243,7 +243,7 @@ float modoBmaquina(ifstream &archivoAbierto, int numCartas, float puntosHumano)
 			score += carta;
 		}
 		cout << carta << endl;
-		cout << "Puntuaci�n: " << score << endl;
+		cout << "Puntuación: " << score << endl;
 		if (score > 7.5)
 		{
 			sehapasado = true;
@@ -267,11 +267,11 @@ int determinaGanador(float puntosHumano, float puntosMaquina)
 	if (puntosHumano > puntosMaquina)
 	{
 		ganador = 1;
-		cout << "��ERES EL GANADOR!!" << endl;
+		cout << "¡¡ERES EL GANADOR!!" << endl;
 	}
 	if (puntosHumano < puntosMaquina) {
 		ganador = 2;
-		cout << "Ha ganado la m�quina :(" << endl;
+		cout << "Ha ganado la máquina :(" << endl;
 	}
 	else
 	{
@@ -280,10 +280,10 @@ int determinaGanador(float puntosHumano, float puntosMaquina)
 		ganador = rand();
 		ganador = 1 + rand() % (3 - 1);
 		if (ganador == 1) {
-			cout << "��ERES EL GANADOR!!" << endl;
+			cout << "¡¡ERES EL GANADOR!!" << endl;
 		}
 		else {
-			cout << "Ha ganado la m�quina :(" << endl;
+			cout << "Ha ganado la máquina :(" << endl;
 		}
 	}
 	return ganador;

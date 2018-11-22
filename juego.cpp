@@ -15,7 +15,7 @@ float modoBmaquina(ifstream &file, int numCartas, float puntosHumano);
 int determinaGanador(float puntosHumano, float puntosMaquina);
 bool quedanCartas(const tCartasPorAparecer cartas);
 float modoChumano(ifstream &file, tCartasPorAparecer cartas);
-bool esProbablePasarse(float machineScore,const tCartasPorAparecer cartas);
+bool esProbablePasarse(float puntosMaquina,const tCartasPorAparecer cartas);
 float modoCmaquina(ifstream &file, tCartasPorAparecer cartas, float puntosHumano);
 
 int main()
@@ -392,14 +392,16 @@ float modoChumano(ifstream &archivoAbierto, tCartasPorAparecer cartas)
 más es mayor que 0.5. Recibe la puntuación actual de la máquina y una variable cartas
 que indica cuántas cartas de cada tipo quedan, y devuelve true si la probabilidad
 de pasarse si roba una carta más supera 0.5 y false en caso contrario.*/
-bool esProbablePasarse(float machineScore,const tCartasPorAparecer cartas)
+bool esProbablePasarse(float puntosMaquina,const tCartasPorAparecer cartas)
 {
 	int cartasMalas = 0, total = 0;
-	double diferencia = (7.5 - machineScore);
+	double diferencia = (7.5 - puntosMaquina);
 	double estimacion = 0;
 	bool pasarse = false;
 	for(int i = 0; i < 10; i++){
 		total+=cartas[i];
+		cout << "Las cartas en la posición" << i << " : "  << "son: " << cartas[i] << endl;
+		cout << "El total es:" <<  total << endl;
 		if((i < 7) && (diferencia < (i+1))){
 			cartasMalas+=cartas[i];
 		}
@@ -494,3 +496,4 @@ float modoCmaquina(ifstream &archivoAbierto, tCartasPorAparecer cartas, float pu
 	}
 	return puntuacion;
 }
+
